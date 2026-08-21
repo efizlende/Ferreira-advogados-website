@@ -33,7 +33,7 @@ const slides = [
     alt: "Mário Ferreira Advogados - Equipa",
   },
   {
-    src: "/images/direito_societario.jpeg",
+    src: "/images/escritorio3.jpeg",
     alt: "Mário Ferreira Advogados - Vista de Cascais",
   },
 ];

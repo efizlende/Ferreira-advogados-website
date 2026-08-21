@@ -41,21 +41,21 @@ const testimonialsData = {
       company: "Hospitality Sector",
       text: "Mário Ferreira Advogados has been an essential partner for our business. Their rigorous and personalized approach made all the difference.",
       rating: 5,
-      image: "/images/m1.jpeg",
+    //  image: "/images/m1.jpeg",
     },
     {
       name: "Private Client",
       company: "Family Law",
       text: "I felt supported and understood at all times. A team that combines technical competence with true human proximity.",
       rating: 5,
-      image: "/images/m2.jpeg",
+     // image: "/images/m2.jpeg",
     },
     {
       name: "Corporate Client",
       company: "Technology",
       text: "Professionalism and efficiency in resolving complex issues. I highly recommend Mário Ferreira Advogados services.",
       rating: 5,
-      image: "/images/m3.jpeg",
+    //  image: "/images/m3.jpeg",
     },
   ],
 };
@@ -98,14 +98,7 @@ export function Testimonials({ locale }: TestimonialsProps) {
           <div className="rounded-2xl bg-white/5 p-8 backdrop-blur-sm sm:p-12">
             {/* Foto do cliente */}
             <div className="mx-auto mb-6 flex justify-center">
-              <div className="relative h-20 w-20 overflow-hidden rounded-full border-2 border-gold/30 shadow-lg shadow-gold/10">
-                <Image
-                  src={currentTestimonial.image || "/images/testimonials/default.jpg"}
-                  alt={currentTestimonial.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              
             </div>
 
             {/* Estrelas */}
