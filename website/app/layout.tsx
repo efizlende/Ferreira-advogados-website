@@ -21,9 +21,6 @@ export const metadata: Metadata = {
     default: "Mário Ferreira Advogados",
   },
   description: "Escritório de advocacia multidisciplinar em Cascais, com mais de 46 anos de experiência.",
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export default function RootLayout({
