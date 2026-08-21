@@ -1,135 +1,199 @@
+# 📚 Documentação Técnica Completa
+
+## Mário Ferreira Advogados - Website Corporativo
 
 ---
 
-## 🎨 Identidade Visual
-
-### Cores
-
-| Nome | Hex | Utilização |
-|------|-----|------------|
-| **Brand** | `#592C34` | Cor principal (navbar, botões, títulos) |
-| **Brand Dark** | `#432128` | Footer, hover states |
-| **Brand Light** | `#70424A` | Variações |
-| **Gold** | `#D9BC66` | Destaques, ícones, detalhes premium |
-| **Gold Dark** | `#B99D4F` | Hover, elementos secundários |
-| **Gold Light** | `#E7D59A` | Fundos suaves |
-| **Background** | `#FFFFFF` | Fundo principal |
-| **Surface** | `#FAF9F7` | Secções alternadas |
-| **Text Primary** | `#2B2425` | Texto principal |
-| **Text Secondary** | `#6F6768` | Texto secundário |
-
-### Tipografia
-
-| Elemento | Fonte | Peso |
-|----------|-------|------|
-| **Títulos** | Cormorant Garamond | 400-700 |
-| **Corpo** | Manrope | 400-700 |
+**Versão:** 1.0.0  
+**Data:** 21 de Agosto de 2026  
+**Status:** Produção ✅  
+**Cliente:** Mário Ferreira Advogados  
+**Desenvolvedor:** Ernesto Uanicela  
 
 ---
 
-## 📄 Páginas do Website
+## 📑 Índice
 
-### 1. Home Page (`/pt` | `/en`)
-- Hero com slideshow de imagens
-- Apresentação do escritório
-- Estatísticas (20+ anos, 6 áreas, 100% compromisso)
-- Lista das 6 áreas de atuação
-- Valores e diferenciais
-- Pré-visualização da equipa
-- Depoimentos de clientes
-- FAQ (4 perguntas)
-- Artigos (3 destaques)
-- Call to Action final
-
-### 2. Sobre Nós (`/pt/about` | `/en/about`)
-- História do escritório
-- Missão e Visão
-- Valores institucionais
-- Linha do tempo
-
-### 3. Áreas de Atuação (`/pt/practice-areas` | `/en/practice-areas`)
-- Lista das 6 áreas com ícones
-- Páginas individuais com:
-  - Descrição detalhada
-  - Áreas de intervenção
-  - Abordagem do escritório
-  - CTA para agendamento
-
-### 4. Equipa (`/pt/team` | `/en/team`)
-- Lista de membros
-- Perfis individuais com:
-  - Biografia completa
-  - Especialidades
-  - Formação académica
-  - Experiência profissional
-  - Prémios e reconhecimentos
-  - Contacto direto
-
-### 5. Contacto (`/pt/contact` | `/en/contact`)
-- Formulário de agendamento com:
-  - Nome, Email, Telefone
-  - Área de interesse
-  - Data preferencial (mínimo 2 dias úteis)
-  - Horário preferencial (Manhã/Tarde/Fim de tarde)
-  - Mensagem adicional
-- Informações de contacto
-- Google Maps integrado (full-screen com overlay)
-
-### 6. Insights (`/pt/insights` | `/en/insights`)
-- Artigos jurídicos
-- Links para PDFs no Google Drive
-- Categorias e tags
-
-### 7. FAQ (`/pt/faq` | `/en/faq`)
-- 6 perguntas frequentes
-- Accordion interativo
-
-### 8. Páginas Legais
-- Política de Privacidade
-- Política de Cookies
-
-### 9. Página de Obrigado (`/pt/obrigado` | `/en/obrigado`)
-- Confirmação de envio do formulário
+1. [Visão Geral do Projeto](#1-visão-geral-do-projeto)
+2. [Arquitetura do Sistema](#2-arquitetura-do-sistema)
+3. [Estrutura de Pastas](#3-estrutura-de-pastas)
+4. [Identidade Visual](#4-identidade-visual)
+5. [Páginas e Funcionalidades](#5-páginas-e-funcionalidades)
+6. [Sistema Multilíngue](#6-sistema-multilíngue)
+7. [Componentes Reutilizáveis](#7-componentes-reutilizáveis)
+8. [SEO e Performance](#8-seo-e-performance)
+9. [Instalação e Desenvolvimento](#9-instalação-e-desenvolvimento)
+10. [Deploy e Produção](#10-deploy-e-produção)
+11. [Manutenção e Evolução](#11-manutenção-e-evolução)
+12. [Anexos](#12-anexos)
 
 ---
 
-## ✨ Funcionalidades Premium
+## 1. Visão Geral do Projeto
 
-| Funcionalidade | Descrição |
-|----------------|-----------|
-| **Multilíngue** | PT/EN com Language Switcher no Navbar |
-| **Slideshow Hero** | Imagens com transição suave, auto-play, controles |
-| **Scroll Progress** | Barra de progresso no topo |
-| **Quick Navigation** | Navegação lateral para secções |
-| **Scroll to Top** | Botão flutuante com animação |
-| **Shimmer Effect** | Animação de brilho no CTA |
-| **Agendamento** | Formulário com data e horário |
-| **Responsividade** | Mobile, Tablet, Desktop |
-| **SEO** | Metadados, sitemap, hreflang |
+### 1.1 Descrição
+
+O website corporativo do **Mário Ferreira Advogados** é uma plataforma digital profissional que representa um escritório de advocacia multidisciplinar com mais de 46 anos de experiência em Cascais e no Distrito de Lisboa.
+
+### 1.2 Objetivos Estratégicos
+
+| Objetivo | Descrição |
+|----------|-----------|
+| **Institucional** | Apresentar a história, missão, valores e experiência do escritório |
+| **Serviços** | Detalhar as 6 áreas de atuação com páginas individuais |
+| **Confiança** | Transmitir credibilidade através de design, conteúdo e prova social |
+| **Conversão** | Facilitar o contacto via CTAs e formulário de agendamento |
+| **Presença Digital** | Website moderno, responsivo e bilíngue (PT/EN) |
+| **SEO** | Estrutura otimizada para mecanismos de busca |
+
+### 1.3 Público-Alvo
+
+| Tipo | Descrição |
+|------|-----------|
+| **Clientes Particulares** | Pessoas que procuram apoio jurídico em diversas áreas |
+| **Empresas** | Negócios que necessitam de serviços jurídicos |
+| **Clientes Internacionais** | Estrangeiros com questões jurídicas em Portugal |
+
+### 1.4 Proposta de Valor
+
+- **Experiência:** +46 anos de prática jurídica
+- **Proximidade:** Atendimento próximo e sénior
+- **Excelência:** Compromisso com a qualidade técnica
+- **Integridade:** Ética, transparência e rigor
+- **Soluções Personalizadas:** Estratégias adaptadas a cada cliente
 
 ---
 
-## 🚀 Instalação e Desenvolvimento
+## 2. Arquitetura do Sistema
 
-### Pré-requisitos
-- Node.js 20.x ou superior
-- PNPM 8.x ou superior
+### 2.1 Stack Tecnológica
 
-### Instalação
 
-```bash
-# Clonar o repositório
-git clone https://github.com/seu-usuario/mario-ferreira-advogados.git
-cd mario-ferreira-advogados
 
-# Instalar dependências
-pnpm install
 
-# Iniciar ambiente de desenvolvimento
-pnpm run dev
 
-# Build de produção
-pnpm run build
+### 2.2 Diagrama de Arquitetura
 
-# Iniciar servidor de produção
-pnpm run start
+┌─────────────────────────────────────────────────────────────────────┐
+│ USER BROWSER │
+└─────────────────────────────────────────────────────────────────────┘
+│
+▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ NEXT.JS APPLICATION │
+├─────────────────────────────────────────────────────────────────────┤
+│ ┌───────────────┐ ┌───────────────┐ ┌───────────────────────┐ │
+│ │ Middleware │ │ Locale │ │ Static Generation │ │
+│ │ (i18n) │──│ Routing │──│ (SSG) │ │
+│ └───────────────┘ └───────────────┘ └───────────────────────┘ │
+├─────────────────────────────────────────────────────────────────────┤
+│ ┌───────────────┐ ┌───────────────┐ ┌───────────────────────┐ │
+│ │ Components │ │ Content │ │ API Routes │ │
+│ │ (UI/UX) │ │ (i18n) │ │ (Contact) │ │
+│ └───────────────┘ └───────────────┘ └───────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────┘
+│
+▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ EXTERNAL SERVICES │
+├─────────────────────────────────────────────────────────────────────┤
+│ ┌───────────────┐ ┌───────────────┐ ┌───────────────────────┐ │
+│ │ Web3Forms │ │ Google Maps │ │ Google Drive (PDFs) │ │
+│ │ (Emails) │ │ (Embed) │ │ (Insights) │ │
+│ └───────────────┘ └───────────────┘ └───────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────┘
+
+
+
+
+
+### 2.3 Fluxo de Dados
+
+Utilizador acede ao website
+│
+▼
+
+Middleware redireciona para o locale correto (pt/en)
+│
+▼
+
+Servidor gera a página estática (SSG)
+│
+▼
+
+Conteúdo é carregado do dicionário (content/)
+│
+▼
+
+Componentes renderizam o layout
+│
+▼
+
+Interações do utilizador (cliques, formulários)
+│
+▼
+
+Formulário → API Route → Web3Forms → Email
+│
+▼
+
+Página de obrigado é exibida
+
+
+
+---
+
+
+---
+
+## 4. Identidade Visual
+
+### 4.1 Sistema de Cores
+
+```css
+/* Design Tokens - globals.css */
+
+@theme {
+  /* Brand */
+  --color-brand: #592C34;
+  --color-brand-dark: #432128;
+  --color-brand-light: #70424A;
+
+  /* Accent */
+  --color-gold: #D9BC66;
+  --color-gold-dark: #B99D4F;
+  --color-gold-light: #E7D59A;
+
+  /* Neutral */
+  --color-background: #FFFFFF;
+  --color-surface: #FAF9F7;
+  --color-surface-muted: #F4F2EF;
+
+  /* Text */
+  --color-text-primary: #2B2425;
+  --color-text-secondary: #6F6768;
+  --color-text-muted: #948C8D;
+  --color-text-inverse: #FFFFFF;
+
+  /* Borders */
+  --color-border: #E5E0DD;
+  --color-border-light: #EFECE9;
+}
+
+
+
+// src/lib/i18n.ts
+export const locales = ["pt", "en"] as const;
+export const defaultLocale = "pt" as const;
+
+export type Locale = (typeof locales)[number];
+
+export const localeNames: Record<Locale, string> = {
+  pt: "Português",
+  en: "English",
+};
+
+export const localeFlags: Record<Locale, string> = {
+  pt: "🇵🇹",
+  en: "🇬🇧",
+};
