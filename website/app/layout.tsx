@@ -1,4 +1,4 @@
-
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
@@ -20,7 +20,10 @@ export const metadata: Metadata = {
     template: "%s | Mário Ferreira Advogados",
     default: "Mário Ferreira Advogados",
   },
-  description: "Escritório de advocacia multidisciplinar em Cascais.",
+  description: "Escritório de advocacia multidisciplinar em Cascais, com mais de 46 anos de experiência.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
