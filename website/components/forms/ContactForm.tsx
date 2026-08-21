@@ -93,7 +93,7 @@ export function ContactForm({ dict, locale }: ContactFormProps) {
 
     try {
       const formPayload = new FormData();
-      formPayload.append("access_key", "c3612a7b-3ab1-4aba-ae8c-8185df487a68");
+      formPayload.append("access_key", "3b07d96a-f89e-4b6c-89a8-5735991a0402");
       formPayload.append("subject", `[Mário Ferreira Advogados] Agendamento de Consulta - ${subjectLabel}`);
       formPayload.append("from_name", "Site Mário Ferreira Advogados");
       formPayload.append("name", formData.name);
