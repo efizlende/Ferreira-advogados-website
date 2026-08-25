@@ -58,9 +58,7 @@ export default async function HomePage({ params }: HomePageProps) {
         <TeamPreview locale={locale} dict={dict.team} />
       </section>
 
-      <section id="testimonials">
-        <Testimonials locale={locale} />
-      </section>
+ 
 
       <section id="faq">
         <FAQPreview locale={locale} dict={dict.faq} />
