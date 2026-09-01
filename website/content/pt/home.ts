@@ -19,7 +19,7 @@ export const home = {
     description1:
       "O Mário Ferreira Advogados é um escritório multidisciplinar orientado para a prestação de serviços jurídicos com rigor, proximidade e foco nas necessidades concretas de cada cliente.",
     description2:
-      "Com mais de 20 anos de experiência em Cascais e no Distrito de Lisboa, atuamos com clientes nacionais e internacionais, oferecendo soluções eficazes e personalizadas.",
+      "Com mais de 40 anos de experiência em Cascais e no Distrito de Lisboa, atuamos com clientes nacionais e internacionais, oferecendo soluções eficazes e personalizadas.",
     cta: "Conheça-nos",
   },
   experience: {
@@ -27,7 +27,7 @@ export const home = {
     title: "Conhecimento que se transforma em confiança.",
     stats: [
       {
-        value: "20+",
+        value: "40+",
         label: "Anos de experiência",
         description: "Atuação consolidada em Cascais e região",
       },
@@ -76,7 +76,7 @@ export const home = {
       {
         title: "Experiência Consolidada",
         description:
-          "Mais de 20 anos de prática jurídica em Cascais e no Distrito de Lisboa, com conhecimento profundo da região.",
+          "Mais de 40 anos de prática jurídica em Cascais e no Distrito de Lisboa, com conhecimento profundo da região.",
       },
       {
         title: "Soluções Personalizadas",

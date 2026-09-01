@@ -19,7 +19,7 @@ export const home = {
     description1:
       "Mário Ferreira Advogados is a multidisciplinary law firm focused on providing legal services with rigor, proximity and a focus on each client's specific needs.",
     description2:
-      "With over 20 years of experience in Cascais and the Lisbon District, we serve national and international clients, offering effective and personalized solutions.",
+      "With over 40 years of experience in Cascais and the Lisbon District, we serve national and international clients, offering effective and personalized solutions.",
     cta: "Learn More",
   },
   experience: {
@@ -27,7 +27,7 @@ export const home = {
     title: "Knowledge that builds trust.",
     stats: [
       {
-        value: "20+",
+        value: "40+",
         label: "Years of experience",
         description: "Consolidated practice in Cascais and region",
       },
@@ -76,7 +76,7 @@ export const home = {
       {
         title: "Consolidated Experience",
         description:
-          "Over 20 years of legal practice in Cascais and the Lisbon District, with deep knowledge of the region.",
+          "Over 40 years of legal practice in Cascais and the Lisbon District, with deep knowledge of the region.",
       },
       {
         title: "Personalized Solutions",
