@@ -160,7 +160,7 @@ export function Hero({ locale, dict }: HeroProps) {
 
           <div className="hidden border-l border-white/20 pl-8 lg:block">
             <span className="font-heading text-7xl font-medium text-gold">
-              20+
+              40+
             </span>
             <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
               {dict.years}
