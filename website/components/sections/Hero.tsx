@@ -1,10 +1,10 @@
-
+// src/components/sections/Hero.tsx
 "use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Locale } from "@/lib/i18n";
 
@@ -40,7 +40,6 @@ const slides = [
 
 export function Hero({ locale, dict }: HeroProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const scrollToAbout = () => {
@@ -61,33 +60,17 @@ export function Hero({ locale, dict }: HeroProps) {
     goToSlide((currentSlide + 1) % slides.length);
   };
 
-  const prevSlide = () => {
-    goToSlide((currentSlide - 1 + slides.length) % slides.length);
-  };
-
-  const togglePlay = () => {
-    setIsPlaying(!isPlaying);
-  };
-
+  // Auto-play com intervalo de 5 segundos
   useEffect(() => {
-    if (!isPlaying) return;
     const timer = setInterval(() => {
       nextSlide();
-    }, 1000);
+    }, 5000);
     return () => clearInterval(timer);
-  }, [currentSlide, isPlaying]);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") nextSlide();
-      if (e.key === "ArrowLeft") prevSlide();
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentSlide]);
 
   return (
     <section className="relative min-h-screen overflow-hidden">
+      {/* Slides */}
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -109,6 +92,7 @@ export function Hero({ locale, dict }: HeroProps) {
         </div>
       ))}
 
+      {/* Overlays */}
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-brand/75 via-brand/65 to-brand/80" />
       <div className="absolute inset-0 z-10 bg-gradient-to-r from-brand/30 to-transparent" />
 
@@ -116,6 +100,7 @@ export function Hero({ locale, dict }: HeroProps) {
         <div className="absolute inset-0 bg-[url('/images/pattern.svg')] bg-repeat" />
       </div>
 
+      {/* Dots indicadores */}
       <div className="absolute bottom-32 left-1/2 z-30 flex -translate-x-1/2 gap-2 md:bottom-28">
         {slides.map((_, index) => (
           <button
@@ -131,36 +116,7 @@ export function Hero({ locale, dict }: HeroProps) {
         ))}
       </div>
 
-      <div className="absolute bottom-40 right-8 z-30 flex gap-2 md:bottom-36">
-        <button
-          onClick={prevSlide}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all hover:border-gold hover:bg-gold/20 hover:text-gold"
-          aria-label="Slide anterior"
-        >
-          <ChevronLeft size={18} />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all hover:border-gold hover:bg-gold/20 hover:text-gold"
-          aria-label="Próximo slide"
-        >
-          <ChevronRight size={18} />
-        </button>
-        <button
-          onClick={togglePlay}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all hover:border-gold hover:bg-gold/20 hover:text-gold"
-          aria-label={isPlaying ? "Pausar" : "Reproduzir"}
-        >
-          {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-        </button>
-      </div>
-
-      <div className="absolute bottom-40 left-8 z-30 hidden text-xs font-medium text-white/40 md:block">
-        <span className="text-gold">{String(currentSlide + 1).padStart(2, "0")}</span>
-        <span className="mx-1">/</span>
-        <span>{String(slides.length).padStart(2, "0")}</span>
-      </div>
-
+      {/* Conteúdo principal */}
       <Container className="relative z-20 flex min-h-screen items-center pb-20 pt-32">
         <div className="grid w-full gap-16 lg:grid-cols-[1fr_320px] lg:items-end">
           <div className="max-w-4xl">
@@ -218,6 +174,7 @@ export function Hero({ locale, dict }: HeroProps) {
         </div>
       </Container>
 
+      {/* Scroll indicator */}
       <button
         onClick={scrollToAbout}
         className="absolute bottom-8 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-3 text-white/50 transition-all hover:text-gold md:flex group"

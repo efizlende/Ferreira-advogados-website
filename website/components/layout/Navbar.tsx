@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -21,12 +20,14 @@ interface NavbarProps {
   };
 }
 
-
 export function Navbar({ locale, dict }: NavbarProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const pathname = usePathname();
+
+  // Verificar se está na home page
+  const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   const navigation = [
     { label: dict.about, href: `/${locale}/about` },
@@ -55,13 +56,19 @@ export function Navbar({ locale, dict }: NavbarProps) {
     return pathname.startsWith(href);
   };
 
+  // Determinar o fundo do navbar
+  const getNavbarBg = () => {
+    // Se estiver na home e não tiver scroll e menu fechado → transparente
+    if (isHomePage && !scrolled && !open) {
+      return "bg-transparent";
+    }
+    // Em qualquer outro caso → fundo escuro
+    return "bg-brand/95 backdrop-blur-xl shadow-lg shadow-brand/20";
+  };
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled || open
-          ? "bg-brand/95 backdrop-blur-xl shadow-lg shadow-brand/20"
-          : "bg-transparent"
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${getNavbarBg()}`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-3 py-3 sm:px-4 sm:py-3 md:px-6 md:py-4 lg:px-8 lg:py-4 xl:px-10">
         {/* Logo */}
@@ -78,12 +85,10 @@ export function Navbar({ locale, dict }: NavbarProps) {
               priority
             />
           </div>
-          
-          {/* Linha decorativa abaixo do logo */}
           <span className="absolute -bottom-0.5 left-0 h-0.5 w-0 bg-gold transition-all duration-500 group-hover:w-full" />
         </Link>
 
-        {/* Desktop Navigation - Visível apenas em telas grandes */}
+        {/* Desktop Navigation */}
         <div className="hidden lg:flex lg:items-center lg:gap-1 xl:gap-2">
           {navigation.map((item, index) => {
             const active = isActive(item.href);
@@ -128,12 +133,10 @@ export function Navbar({ locale, dict }: NavbarProps) {
             );
           })}
 
-          {/* Language Switcher - Desktop */}
           <div className="ml-2 border-l border-white/10 pl-3 xl:ml-4 xl:pl-4">
             <LanguageSwitcher currentLocale={locale} />
           </div>
 
-          {/* CTA Button Desktop */}
           <Link
             href={`/${locale}/contact`}
             className="group relative ml-2 overflow-hidden rounded-full bg-gold px-3 py-1.5 text-xs font-bold text-brand transition-all hover:bg-gold-light hover:shadow-lg hover:shadow-gold/30 xl:ml-4 xl:px-6 xl:py-2.5 xl:text-sm"
@@ -151,9 +154,8 @@ export function Navbar({ locale, dict }: NavbarProps) {
           </Link>
         </div>
 
-        {/* Mobile Controls - Visível apenas em telas pequenas */}
+        {/* Mobile Controls */}
         <div className="flex items-center gap-2 lg:hidden">
-          {/* Language Switcher - Mobile */}
           <div className="scale-90 sm:scale-100">
             <LanguageSwitcher currentLocale={locale} />
           </div>
@@ -183,7 +185,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
         </div>
       </nav>
 
-      {/* Mobile Menu - Full Screen com scroll */}
+      {/* Mobile Menu */}
       {open && (
         <div className="fixed inset-x-0 top-[72px] z-40 h-[calc(100vh-72px)] overflow-y-auto bg-brand/98 backdrop-blur-xl lg:hidden">
           <div className="flex flex-col space-y-1 px-4 py-6 sm:px-6">
@@ -218,7 +220,6 @@ export function Navbar({ locale, dict }: NavbarProps) {
               );
             })}
 
-            {/* CTA Button Mobile - Full width */}
             <div className="mt-4 border-t border-white/10 pt-4">
               <Link
                 href={`/${locale}/contact`}
@@ -234,7 +235,6 @@ export function Navbar({ locale, dict }: NavbarProps) {
               </Link>
             </div>
 
-            {/* Informações de contacto no menu mobile */}
             <div className="mt-6 border-t border-white/10 pt-6">
               <div className="space-y-3 text-center text-sm text-white/40">
                 <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/20">
@@ -264,7 +264,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
       {/* Linha decorativa */}
       <div
         className={`h-px w-full bg-gradient-to-r from-transparent via-gold/20 to-transparent transition-opacity duration-500 ${
-          scrolled ? "opacity-100" : "opacity-0"
+          scrolled || !isHomePage ? "opacity-100" : "opacity-0"
         }`}
       />
     </header>

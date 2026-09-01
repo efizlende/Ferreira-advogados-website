@@ -247,8 +247,8 @@ export function Footer({ locale, dict }: FooterProps) {
                   </p>
                   <p className="text-[10px] text-white/40">
                     {locale === "pt" 
-                      ? "Mais de 20 anos de experiência" 
-                      : "Over 20 years of experience"}
+                      ? "Mais de 40 anos de experiência" 
+                      : "Over 40 years of experience"}
                   </p>
                 </div>
               </div>

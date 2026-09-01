@@ -5,7 +5,7 @@ export const contact = {
     "Entre em contacto connosco para agendar uma consulta ou obter mais informações sobre os nossos serviços.",
   form: {
     title: "Agende a sua Consulta",
-    subtitle: "Preencha os dados abaixo e entraremos em contacto para confirmar a sua reserva.",
+    subtitle: "Preencha os dados abaixo e entraremos em contacto para confirmar o seu agendamento.",
     fields: {
       name: "Nome *",
       namePlaceholder: "O seu nome",
@@ -50,7 +50,7 @@ export const contact = {
   info: {
     title: "Como podemos ajudá-lo?",
     description:
-      "Estamos disponíveis para agendar uma consulta presencial ou remota. Respondemos a todos os pedidos em até 24h úteis.",
+      "Estamos disponíveis para agendar uma consulta presencial ou remota. Respondemos a todos os pedidos  até 24h úteis.",
     address: {
       label: "Morada",
       value: "Rua José Florindo, 44C\n2750-400 Cascais",

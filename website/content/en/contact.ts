@@ -5,7 +5,7 @@ export const contact = {
     "Contact us to schedule a consultation or get more information about our services.",
   form: {
     title: "Schedule Your Consultation",
-    subtitle: "Fill in the details below and we will contact you to confirm your appointment.",
+    subtitle: "Fill in the details below and we will contact you to confirm your scheduling.",
     fields: {
       name: "Name *",
       namePlaceholder: "Your name",

@@ -1,4 +1,4 @@
-
+// src/components/sections/ContactCTA.tsx
 "use client";
 
 import Link from "next/link";
@@ -102,7 +102,7 @@ export function ContactCTA({ locale, dict }: ContactCTAProps) {
                   <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/50">
                     {dict.info.phone.label}
                   </p>
-                  <p className="text-sm font-semibold">
+                  <p className="text-sm font-semibold text-white">
                     {dict.info.phone.value}
                   </p>
                 </div>
@@ -120,7 +120,7 @@ export function ContactCTA({ locale, dict }: ContactCTAProps) {
                   <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/50">
                     {dict.info.email.label}
                   </p>
-                  <p className="text-sm font-semibold">
+                  <p className="text-sm font-semibold text-white">
                     {dict.info.email.value}
                   </p>
                 </div>
@@ -135,7 +135,7 @@ export function ContactCTA({ locale, dict }: ContactCTAProps) {
                   <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/50">
                     {dict.info.address.label}
                   </p>
-                  <p className="text-sm font-semibold whitespace-pre-line">
+                  <p className="text-sm font-semibold text-white whitespace-pre-line">
                     {dict.info.address.value}
                   </p>
                 </div>

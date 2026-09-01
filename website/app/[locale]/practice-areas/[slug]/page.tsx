@@ -78,7 +78,7 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
           "Usucapião e regularização de imóveis",
         ],
         approach:
-          "Adotamos uma abordagem personalizada e estratégica em cada caso, analisando detalhadamente a situação do cliente e buscando a solução mais eficaz, seja através de negociação, mediação ou via judicial.",
+          "Adotamos uma abordagem personalizada e estratégica em cada caso, analisando detalhadamente a situação do cliente e procurando a solução mais eficaz, seja através de negociação, mediação ou via judicial.",
       },
       "direito-comercial-societario": {
         subtitle: "Apoio jurídico integral para o seu negócio",
@@ -108,7 +108,7 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
           "Assessoria a empresas em compliance laboral",
         ],
         approach:
-          "Buscamos soluções equilibradas e justas, priorizando a conciliação sempre que possível, mas atuando com firmeza na defesa dos interesses dos nossos clientes quando necessário.",
+          "Procuramos soluções equilibradas e justas, priorizando a conciliação sempre que possível, mas atuando com firmeza na defesa dos interesses dos nossos clientes quando necessário.",
       },
       "direito-familia-sucessoes": {
         subtitle: "Acompanhamento sensível em momentos importantes",
