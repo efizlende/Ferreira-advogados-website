@@ -56,7 +56,6 @@ export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
   const imagePath = member.image || null;
   const isPt = locale === "pt";
 
-  // Campos adicionais (se existirem no dicionário)
   const fullBio = (member as any).fullBio || member.bio;
   const education: string[] = (member as any).education || [];
   const experience: string[] = (member as any).experience || [];
@@ -71,7 +70,7 @@ export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
 
         <Container className="relative z-10 flex min-h-[50vh] items-center">
           <div className="grid w-full gap-8 md:grid-cols-[auto,1fr] md:gap-12">
-            {/* Foto */}
+            {/* Foto - Centralizada */}
             <div className="flex justify-center md:justify-start">
               <div className="relative h-48 w-48 overflow-hidden rounded-full border-4 border-gold/30 shadow-2xl sm:h-56 sm:w-56 md:h-64 md:w-64">
                 {imagePath ? (
@@ -79,7 +78,7 @@ export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
                     src={imagePath}
                     alt={member.name}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                     priority
                   />
                 ) : (
@@ -110,7 +109,7 @@ export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
                 {member.bio}
               </p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-4">
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-4 md:justify-start">
                 <a
                   href={`mailto:${member.email}`}
                   className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-2.5 text-sm font-bold text-brand transition-all hover:bg-gold-light"
@@ -118,17 +117,6 @@ export default async function TeamMemberPage({ params }: TeamMemberPageProps) {
                   <Mail size={16} />
                   {isPt ? "Enviar Email" : "Send Email"}
                 </a>
-                {(member as any).linkedin && (
-                  <a
-                    href={(member as any).linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-2.5 text-sm font-medium text-white transition-all hover:border-gold hover:bg-white/10"
-                  >
-                  
-                    LinkedIn
-                  </a>
-                )}
                 <Link
                   href={`/${locale}/team`}
                   className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-2.5 text-sm font-medium text-white transition-all hover:border-white hover:bg-white/10"

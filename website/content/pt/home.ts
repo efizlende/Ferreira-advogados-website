@@ -52,7 +52,7 @@ export const home = {
     viewAll: "Ver todas",
   },
   whyChooseUs: {
-    badge: "Porquê o Mário Ferreira Advogados",
+    badge: "Nossos Princípios",
     title: "Confiança que se constrói",
     titleHighlight: "em cada relação.",
     description:

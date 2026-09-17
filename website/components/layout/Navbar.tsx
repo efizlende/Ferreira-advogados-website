@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, MessageCircle } from "lucide-react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 interface NavbarProps {
@@ -26,7 +26,6 @@ export function Navbar({ locale, dict }: NavbarProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const pathname = usePathname();
 
-  // Verificar se está na home page
   const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   const navigation = [
@@ -56,13 +55,10 @@ export function Navbar({ locale, dict }: NavbarProps) {
     return pathname.startsWith(href);
   };
 
-  // Determinar o fundo do navbar
   const getNavbarBg = () => {
-    // Se estiver na home e não tiver scroll e menu fechado → transparente
     if (isHomePage && !scrolled && !open) {
       return "bg-transparent";
     }
-    // Em qualquer outro caso → fundo escuro
     return "bg-brand/95 backdrop-blur-xl shadow-lg shadow-brand/20";
   };
 
@@ -70,7 +66,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${getNavbarBg()}`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-3 py-3 sm:px-4 sm:py-3 md:px-6 md:py-4 lg:px-8 lg:py-4 xl:px-10">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-3 sm:px-4 sm:py-3 md:px-6 md:py-4 lg:px-8 lg:py-4 xl:px-10">
         {/* Logo */}
         <Link
           href={`/${locale}`}
@@ -89,7 +85,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex lg:items-center lg:gap-1 xl:gap-2">
+        <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:gap-0.5 xl:gap-1">
           {navigation.map((item, index) => {
             const active = isActive(item.href);
             const isHovered = hoveredIndex === index;
@@ -98,12 +94,12 @@ export function Navbar({ locale, dict }: NavbarProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="group relative px-2 py-2 xl:px-4"
+                className="group relative whitespace-nowrap px-1.5 py-2 xl:px-3"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <span
-                  className={`relative text-xs font-medium transition-all duration-300 md:text-sm ${
+                  className={`relative text-[11px] font-medium transition-all duration-300 xl:text-sm ${
                     active
                       ? "text-gold"
                       : isHovered
@@ -133,21 +129,30 @@ export function Navbar({ locale, dict }: NavbarProps) {
             );
           })}
 
-          <div className="ml-2 border-l border-white/10 pl-3 xl:ml-4 xl:pl-4">
+          <div className="ml-1 border-l border-white/10 pl-2 xl:ml-2 xl:pl-3">
             <LanguageSwitcher currentLocale={locale} />
           </div>
 
+          <a
+            href="https://wa.me/351965228772"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-1 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-[#25D366] px-3 py-1.5 text-[11px] font-bold text-white transition-all hover:bg-[#1ebe5b] hover:shadow-lg hover:shadow-[#25D366]/30 xl:ml-2 xl:gap-2 xl:px-4 xl:py-2 xl:text-sm"
+          >
+            <MessageCircle size={14} className="shrink-0 xl:size-[15px]" />
+            <span>WhatsApp</span>
+          </a>
+
           <Link
             href={`/${locale}/contact`}
-            className="group relative ml-2 overflow-hidden rounded-full bg-gold px-3 py-1.5 text-xs font-bold text-brand transition-all hover:bg-gold-light hover:shadow-lg hover:shadow-gold/30 xl:ml-4 xl:px-6 xl:py-2.5 xl:text-sm"
+            className="group relative ml-1 inline-flex items-center overflow-hidden whitespace-nowrap rounded-full bg-gold px-3 py-1.5 text-[11px] font-bold text-brand transition-all hover:bg-gold-light hover:shadow-lg hover:shadow-gold/30 xl:ml-2 xl:px-5 xl:py-2 xl:text-sm"
           >
             <span className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-            <span className="relative z-10 flex items-center gap-1 xl:gap-2">
-              <span className="hidden sm:inline">{dict.cta}</span>
-              <span className="sm:hidden">{dict.cta}</span>
+            <span className="relative z-10 inline-flex items-center gap-1 xl:gap-2">
+              <span className="whitespace-nowrap">{dict.cta}</span>
               <ArrowUpRight
-                size={14}
-                className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 xl:size-[15px]"
+                size={13}
+                className="shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 xl:size-[15px]"
               />
             </span>
             <span className="absolute inset-0 translate-y-full bg-gold-light transition-transform duration-500 group-hover:translate-y-0" />
@@ -221,16 +226,29 @@ export function Navbar({ locale, dict }: NavbarProps) {
             })}
 
             <div className="mt-4 border-t border-white/10 pt-4">
+              <a
+                href="https://wa.me/351965228772"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex w-full items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-[#25D366] px-6 py-4 text-base font-bold text-white transition-all hover:bg-[#1ebe5b]"
+                onClick={() => setOpen(false)}
+              >
+                <MessageCircle size={18} className="shrink-0" />
+                <span>WhatsApp — 965 228 772</span>
+              </a>
+            </div>
+
+            <div className="mt-3">
               <Link
                 href={`/${locale}/contact`}
-                className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-gold px-6 py-4 text-base font-bold text-brand transition-all hover:bg-gold-light"
+                className="group relative flex w-full items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-gold px-6 py-4 text-base font-bold text-brand transition-all hover:bg-gold-light"
                 onClick={() => setOpen(false)}
               >
                 <span className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/30 to-transparent" />
                 <span className="relative z-10">{dict.cta}</span>
                 <ArrowUpRight
                   size={18}
-                  className="relative z-10 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                  className="relative z-10 shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
                 />
               </Link>
             </div>
@@ -241,16 +259,16 @@ export function Navbar({ locale, dict }: NavbarProps) {
                   {locale === "pt" ? "Contacto" : "Contact"}
                 </p>
                 <a
-                  href="tel:+351XXXYYYY"
+                  href="tel:+351214848390"
                   className="block text-white/60 transition-colors hover:text-gold"
                 >
-                  +351 XXX XXX XXX
+                  +351 214 848 390
                 </a>
                 <a
-                  href="mailto:geral@mariaferreira.pt"
+                  href="mailto:mario.ferreira-4651l@advogados.oa.pt"
                   className="block text-white/60 transition-colors hover:text-gold"
                 >
-                  geral@mariaferreira.pt
+                  mario.ferreira-4651l@advogados.oa.pt
                 </a>
                 <p className="text-xs text-white/30">
                   Rua José Florindo, 44C • 2750-400 Cascais

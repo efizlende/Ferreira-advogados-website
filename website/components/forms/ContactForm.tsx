@@ -51,7 +51,6 @@ export function ContactForm({ dict, locale }: ContactFormProps) {
     message: "",
   });
 
-  // Data mínima para agendamento (hoje + 2 dias úteis)
   const getMinDate = () => {
     const date = new Date();
     date.setDate(date.getDate() + 2);
@@ -175,7 +174,6 @@ export function ContactForm({ dict, locale }: ContactFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-5">
-      {/* Nome */}
       <div>
         <label htmlFor="name" className="text-sm font-medium text-brand">
           {dict.fields.name}
@@ -191,7 +189,6 @@ export function ContactForm({ dict, locale }: ContactFormProps) {
         />
       </div>
 
-      {/* Email */}
       <div>
         <label htmlFor="email" className="text-sm font-medium text-brand">
           {dict.fields.email}
@@ -207,7 +204,6 @@ export function ContactForm({ dict, locale }: ContactFormProps) {
         />
       </div>
 
-      {/* Telefone */}
       <div>
         <label htmlFor="phone" className="text-sm font-medium text-brand">
           {dict.fields.phone}
@@ -223,7 +219,6 @@ export function ContactForm({ dict, locale }: ContactFormProps) {
         />
       </div>
 
-      {/* Área de Interesse */}
       <div>
         <label htmlFor="subject" className="text-sm font-medium text-brand">
           {dict.fields.subject}
@@ -244,7 +239,6 @@ export function ContactForm({ dict, locale }: ContactFormProps) {
         </select>
       </div>
 
-      {/* Data Preferencial */}
       <div>
         <label htmlFor="date" className="text-sm font-medium text-brand">
           {dict.fields.date}
@@ -270,7 +264,6 @@ export function ContactForm({ dict, locale }: ContactFormProps) {
         </p>
       </div>
 
-      {/* Horário Preferencial */}
       <div>
         <label htmlFor="time" className="text-sm font-medium text-brand">
           {dict.fields.time}
@@ -295,7 +288,6 @@ export function ContactForm({ dict, locale }: ContactFormProps) {
         </div>
       </div>
 
-      {/* Mensagem */}
       <div>
         <label htmlFor="message" className="text-sm font-medium text-brand">
           {dict.fields.message}
@@ -310,7 +302,6 @@ export function ContactForm({ dict, locale }: ContactFormProps) {
         />
       </div>
 
-      {/* Botão Submit */}
       <button
         type="submit"
         disabled={isSubmitting}

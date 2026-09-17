@@ -59,6 +59,10 @@ export const contact = {
       label: "Phone",
       value: "+351 214 848 390",
     },
+    whatsapp: {
+      label: "WhatsApp",
+      value: "965 228 772",
+    },
     email: {
       label: "Email",
       value: "mario.ferreira-4651l@advogados.oa.pt",

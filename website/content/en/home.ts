@@ -52,7 +52,7 @@ export const home = {
     viewAll: "View all",
   },
   whyChooseUs: {
-    badge: "Why Mário Ferreira Advogados",
+    badge: "Our Principles",
     title: "Trust built",
     titleHighlight: "in every relationship.",
     description:

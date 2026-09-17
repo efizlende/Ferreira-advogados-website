@@ -6,7 +6,6 @@ import { Locale } from "@/lib/i18n";
 import Link from "next/link";
 import { ArrowUpRight, Check, Scale, Building2, Users, Heart, Gavel, Home } from "lucide-react";
 
-// Mapa de ícones
 const iconMap = {
   Scale: Scale,
   Building2: Building2,
@@ -23,7 +22,6 @@ interface PracticeAreaPageProps {
   }>;
 }
 
-// Gerar paths estáticos para todas as áreas
 export async function generateStaticParams() {
   const locales: Locale[] = ["pt", "en"];
   const allParams = [];
@@ -47,7 +45,6 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
   const { locale, slug } = await params;
   const dict = await getDictionary(locale);
 
-  // Encontrar a área atual
   const area = dict.practiceAreas.areas.find((a) => a.slug === slug);
 
   if (!area) {
@@ -68,37 +65,37 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
       "direito-civil": {
         subtitle: "Proteção e defesa dos seus direitos civis",
         description:
-          "O Direito Civil é o ramo do Direito que regula as relações entre pessoas, sejam elas físicas ou jurídicas. Atuamos na defesa dos seus interesses em matérias como responsabilidade civil, contratos, direitos reais e propriedade.",
+          "O Direito Civil é o ramo do direito privado que disciplina as relações jurídicas entre pessoas singulares e coletivas. Atuamos na defesa dos seus interesses em matérias como responsabilidade civil, contratos, direitos reais e propriedade.",
         expertise: [
           "Responsabilidade civil (contratual e extracontratual)",
           "Contratos (compra e venda, locação, prestação de serviços)",
           "Direitos reais (propriedade, usufruto, servidões)",
           "Direito das obrigações",
-          "Indenizações e reparação de danos",
+          "Indemnizações e reparação de danos",
           "Usucapião e regularização de imóveis",
         ],
         approach:
-          "Adotamos uma abordagem personalizada e estratégica em cada caso, analisando detalhadamente a situação do cliente e procurando a solução mais eficaz, seja através de negociação, mediação ou via judicial.",
+          "O escritório aprecia a posição jurídica do cliente e identifica as vias disponíveis, privilegiando a composição extrajudicial. Não sendo alcançável o acordo, assegura o patrocínio judiciário até ao trânsito em julgado.",
       },
       "direito-comercial-societario": {
         subtitle: "Apoio jurídico integral para o seu negócio",
         description:
-          "O Direito Comercial e Societário abrange todas as áreas do Direito relacionadas à atividade empresarial. Prestamos assessoria jurídica completa para empresas, desde a constituição até a gestão e governação.",
+          "O Direito Comercial e Societário abrange as matérias jurídicas relacionadas com a atividade empresarial. Prestamos assessoria jurídica a empresas em todas as fases do seu ciclo de vida, da constituição à gestão corrente e ao governo societário.",
         expertise: [
-          "Constituição de sociedades e regimes societários",
+          "Constituição de sociedades e pactos sociais",
           "Contratos comerciais e empresariais",
           "Fusões, aquisições e reestruturações",
-          "Governação corporativa e compliance",
+          "Governo societário e compliance",
           "Direito societário e relações entre sócios",
           "Sucessão empresarial e planeamento",
         ],
         approach:
-          "Oferecemos um acompanhamento próximo e contínuo, entendendo as particularidades de cada negócio e atuando de forma preventiva para evitar litígios, além de resolver questões complexas com agilidade.",
+          "O escritório presta assessoria continuada a sociedades comerciais, salientando os estatutos, acordos parassociais, contratação comercial e apoio aos órgãos sociais. A intervenção antecipa o risco jurídico, que se fixa na constituição e na contratação.",
       },
       "direito-trabalho": {
         subtitle: "Defesa dos direitos dos trabalhadores e empresas",
         description:
-          "O Direito do Trabalho regula as relações entre empregadores e empregados. Atuamos tanto na defesa dos direitos dos trabalhadores quanto na assessoria a empresas, garantindo o cumprimento da legislação laboral.",
+          "O Direito do Trabalho regula as relações entre empregadores e trabalhadores. Intervimos tanto na defesa dos direitos dos trabalhadores como na assessoria a empresas, em matéria de conformidade com o Código do Trabalho e demais legislação laboral.",
         expertise: [
           "Contratos de trabalho (individuais e coletivos)",
           "Processos disciplinares e despedimentos",
@@ -108,14 +105,14 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
           "Assessoria a empresas em compliance laboral",
         ],
         approach:
-          "Procuramos soluções equilibradas e justas, priorizando a conciliação sempre que possível, mas atuando com firmeza na defesa dos interesses dos nossos clientes quando necessário.",
+          "O escritório intervém junto de empregadores e de trabalhadores, em processos distintos. Do lado da empresa, contratos, processos disciplinares e cessação do vínculo; do lado do trabalhador, licitude do despedimento, créditos laborais e patrocínio em juízo.",
       },
       "direito-familia-sucessoes": {
         subtitle: "Acompanhamento sensível em momentos importantes",
         description:
-          "O Direito da Família e Sucessões lida com questões profundamente pessoais e emocionais. Oferecemos um acompanhamento humano e sensível, aliado ao rigor técnico necessário para garantir a proteção dos seus interesses.",
+          "O Direito da Família e das Sucessões trata de questões profundamente pessoais. Asseguramos um acompanhamento humano e discreto, aliado ao rigor técnico que a defesa dos seus interesses exige.",
         expertise: [
-          "Divórcio e separação de bens",
+          "Divórcio e partilha do património conjugal",
           "Responsabilidades parentais e regulação do exercício",
           "Partilhas e inventários",
           "Testamentos e planeamento sucessório",
@@ -123,12 +120,12 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
           "Uniões de facto e direitos patrimoniais",
         ],
         approach:
-          "Atuamos com empatia e discrição, procurando soluções que preservem o bem-estar de todos os envolvidos, especialmente quando há menores, e garantindo a segurança jurídica das decisões.",
+          "O escritório acompanha divórcios, regulação das responsabilidades parentais, alimentos e inventários, por via consensual ou contenciosa. Procura-se o acordo sempre que possível, por ser o que menor desgaste impõe; não o sendo, assegura-se a representação judicial.",
       },
       "direito-penal": {
         subtitle: "Defesa rigorosa dos seus direitos em processos penais",
         description:
-          "O Direito Penal é a área que protege os bens jurídicos mais fundamentais da sociedade. Oferecemos uma defesa técnica e rigorosa, garantindo que os seus direitos sejam respeitados em todas as fases do processo penal.",
+          "O Direito Penal tutela os bens jurídicos fundamentais da comunidade. Asseguramos defesa técnica em todas as fases do processo, do inquérito ao recurso, bem como a representação do ofendido que se constitua assistente.",
         expertise: [
           "Acompanhamento em todas as fases do processo penal",
           "Defesa em inquéritos e instrução",
@@ -138,12 +135,12 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
           "Medidas de coação e recursos",
         ],
         approach:
-          "Garantimos uma defesa ativa e estratégica, com acompanhamento próximo e comunicação transparente, assegurando que o cliente compreenda todas as etapas do processo.",
+          "O escritório assegura a defesa do arguido em inquérito, instrução, julgamento e recurso, e a representação do assistente. O mandato não se afere pelo desfecho, que a lei não consente prometer, mas pela plenitude das garantias de defesa exercidas.",
       },
       "direito-imobiliario": {
         subtitle: "Segurança nas suas transações imobiliárias",
         description:
-          "O Direito Imobiliário regula todas as relações jurídicas que envolvem bens imóveis. Atuamos para garantir que as suas transações sejam seguras, desde a compra e venda até ao licenciamento e construção.",
+          "O Direito Imobiliário abrange as relações jurídicas relativas a bens imóveis. Acompanhamos a operação em todas as fases — da verificação registal e da negociação à escritura, ao licenciamento e à execução da obra.",
         expertise: [
           "Compra e venda de imóveis",
           "Arrendamento urbano e rural",
@@ -153,14 +150,14 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
           "Regularização de imóveis",
         ],
         approach:
-          "Oferecemos um serviço completo e preventivo, analisando todos os aspetos jurídicos das transações imobiliárias para evitar futuros litígios e garantir a segurança do investimento.",
+          "O escritório acompanha a operação imobiliária da verificação registal à escritura e ao registo e, em matéria de construção, o licenciamento e a empreitada. Tratando-se de adquirente não residente, assegura as formalidades prévias exigíveis.",
       },
     },
     en: {
       "civil-law": {
         subtitle: "Protection and defense of your civil rights",
         description:
-          "Civil Law regulates the relationships between individuals and legal entities. We act in defense of your interests in matters such as civil liability, contracts, property rights and ownership.",
+          "Civil Law is the branch of private law that governs legal relations between natural and legal persons. We act in defense of your interests in matters such as civil liability, contracts, property rights and ownership.",
         expertise: [
           "Civil liability (contractual and non-contractual)",
           "Contracts (purchase and sale, lease, services)",
@@ -170,14 +167,14 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
           "Adverse possession and property regularization",
         ],
         approach:
-          "We adopt a personalized and strategic approach in each case, analyzing the client's situation in detail and seeking the most effective solution, whether through negotiation, mediation or judicial means.",
+          "The firm assesses the client's legal position and identifies the available avenues, favoring extrajudicial settlement. If no agreement can be reached, it ensures judicial representation until the final judgment becomes res judicata.",
       },
       "corporate-commercial-law": {
         subtitle: "Complete legal support for your business",
         description:
-          "Corporate and Commercial Law covers all areas of law related to business activity. We provide complete legal advice for companies, from incorporation to management and governance.",
+          "Corporate and Commercial Law covers the legal matters related to business activity. We provide legal advice to companies at all stages of their life cycle, from incorporation to day-to-day management and corporate governance.",
         expertise: [
-          "Company incorporation and corporate regimes",
+          "Company incorporation and shareholders' agreements",
           "Commercial and business contracts",
           "Mergers, acquisitions and restructurings",
           "Corporate governance and compliance",
@@ -185,12 +182,12 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
           "Business succession and planning",
         ],
         approach:
-          "We offer close and continuous support, understanding the particularities of each business and acting preventively to avoid litigation, as well as resolving complex issues with agility.",
+          "The firm provides ongoing advice to commercial companies, focusing on articles of association, shareholders' agreements, commercial contracting and support to corporate bodies. Intervention anticipates legal risk, which is fixed at incorporation and contracting.",
       },
       "employment-law": {
         subtitle: "Defense of workers' and companies' rights",
         description:
-          "Employment Law regulates the relationship between employers and employees. We act both in defense of workers' rights and in advising companies, ensuring compliance with labor legislation.",
+          "Employment Law governs the relations between employers and workers. We intervene both in defense of workers' rights and in advising companies, regarding compliance with the Labour Code and other employment legislation.",
         expertise: [
           "Employment contracts (individual and collective)",
           "Disciplinary proceedings and dismissals",
@@ -200,14 +197,14 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
           "Labor compliance advisory for companies",
         ],
         approach:
-          "We seek balanced and fair solutions, prioritizing conciliation whenever possible, but acting firmly in defending our clients' interests when necessary.",
+          "The firm intervenes with employers and workers, in separate proceedings. On the company side, contracts, disciplinary proceedings and termination of the employment relationship; on the worker side, lawfulness of dismissal, labor credits and representation in court.",
       },
       "family-succession-law": {
         subtitle: "Sensitive support in important moments",
         description:
-          "Family and Succession Law deals with deeply personal and emotional issues. We offer human and sensitive support, combined with the technical rigor necessary to protect your interests.",
+          "Family and Succession Law deals with deeply personal issues. We ensure human and discreet support, combined with the technical rigor that the defense of your interests requires.",
         expertise: [
-          "Divorce and separation of assets",
+          "Divorce and division of marital property",
           "Parental responsibilities and regulation",
           "Estate division and inventories",
           "Wills and succession planning",
@@ -215,12 +212,12 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
           "De facto unions and property rights",
         ],
         approach:
-          "We act with empathy and discretion, seeking solutions that preserve the well-being of all involved, especially when minors are involved, and ensuring the legal security of decisions.",
+          "The firm handles divorces, regulation of parental responsibilities, maintenance and inventories, whether by consent or contentious means. An agreement is sought whenever possible, as it imposes less strain; if not, judicial representation is ensured.",
       },
       "criminal-law": {
         subtitle: "Rigorous defense of your rights in criminal proceedings",
         description:
-          "Criminal Law protects the most fundamental legal assets of society. We offer a technical and rigorous defense, ensuring that your rights are respected at all stages of the criminal process.",
+          "Criminal Law protects the fundamental legal assets of the community. We ensure technical defense at all stages of the proceedings, from inquiry to appeal, as well as the representation of the victim who constitutes themselves as assistant.",
         expertise: [
           "Support at all stages of criminal proceedings",
           "Defense in inquiries and instruction",
@@ -230,12 +227,12 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
           "Coercive measures and appeals",
         ],
         approach:
-          "We guarantee an active and strategic defense, with close support and transparent communication, ensuring that the client understands all stages of the process.",
+          "The firm ensures the defense of the defendant in inquiry, instruction, trial and appeal, and the representation of the assistant. The mandate is not measured by the outcome, which the law does not allow to promise, but by the fullness of the defense guarantees exercised.",
       },
       "real-estate-law": {
         subtitle: "Security in your real estate transactions",
         description:
-          "Real Estate Law regulates all legal relationships involving real estate. We act to ensure that your transactions are safe, from purchase and sale to licensing and construction.",
+          "Real Estate Law covers legal relations relating to real estate. We accompany the operation at all stages — from registry verification and negotiation to the deed, licensing and execution of the works.",
         expertise: [
           "Purchase and sale of properties",
           "Urban and rural leasing",
@@ -245,7 +242,7 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
           "Property regularization",
         ],
         approach:
-          "We offer a complete and preventive service, analyzing all legal aspects of real estate transactions to avoid future litigation and ensure investment security.",
+          "The firm accompanies the real estate operation from registry verification to the deed and registration and, in matters of construction, licensing and the works contract. In the case of a non-resident acquirer, it ensures the required prior formalities.",
       },
     },
   };
@@ -267,7 +264,6 @@ export default async function PracticeAreaPage({ params }: PracticeAreaPageProps
 
         <Container className="relative z-10 flex min-h-[50vh] items-center">
           <div className="max-w-4xl">
-            {/* Ícone */}
             <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gold/20 text-gold">
               <Icon size={32} />
             </div>

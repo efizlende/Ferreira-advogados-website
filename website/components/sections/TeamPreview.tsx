@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -23,7 +22,6 @@ interface TeamPreviewProps {
 }
 
 export function TeamPreview({ locale, dict }: TeamPreviewProps) {
-  // Mostrar apenas os primeiros 3 membros
   const members = dict.members.slice(0, 3);
 
   return (
@@ -72,19 +70,17 @@ export function TeamPreview({ locale, dict }: TeamPreviewProps) {
                 key={index}
                 className="group overflow-hidden rounded-2xl bg-white transition-all duration-300 hover:shadow-xl"
               >
-                {/* Image Container */}
+                {/* Image Container - Centralizada */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-brand/10 to-gold/10">
                   {imagePath ? (
-                    // Mostrar imagem se existir
                     <Image
                       src={imagePath}
                       alt={member.name}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   ) : (
-                    // Fallback: Iniciais se não houver imagem
                     <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-brand/5 to-gold/5">
                       <span className="font-heading text-6xl text-brand/20">
                         {member.name.split(" ")[0][0]}
@@ -93,7 +89,6 @@ export function TeamPreview({ locale, dict }: TeamPreviewProps) {
                     </div>
                   )}
 
-                  {/* Overlay com nome no hover */}
                   <div className="absolute inset-0 flex items-center justify-center bg-brand/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <span className="font-heading text-lg font-medium text-white">
                       {member.name}

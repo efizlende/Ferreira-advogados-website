@@ -3,7 +3,7 @@ import { getDictionary } from "@/content/dictionaries";
 import { Container } from "@/components/ui/Container";
 import { Locale } from "@/lib/i18n";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 
 interface ContactPageProps {
   params: Promise<{ locale: Locale }>;
@@ -12,6 +12,9 @@ interface ContactPageProps {
 export default async function ContactPage({ params }: ContactPageProps) {
   const { locale } = await params;
   const dict = await getDictionary(locale);
+
+  const whatsappNumber = dict.contact.info.whatsapp?.value?.replace(/\s/g, "") || "965228772";
+  const whatsappLink = `https://wa.me/351${whatsappNumber}`;
 
   return (
     <div className="pt-32">
@@ -56,6 +59,18 @@ export default async function ContactPage({ params }: ContactPageProps) {
                 {dict.contact.info.description}
               </p>
 
+              {/* WhatsApp em Destaque */}
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-8 inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-[#25D366] px-6 py-5 text-base font-bold text-white shadow-lg shadow-[#25D366]/30 transition-all hover:bg-[#1ebe5b] hover:scale-[1.02] sm:w-auto"
+              >
+                <MessageCircle size={22} className="transition-transform duration-300 group-hover:scale-110" />
+                <span>WhatsApp</span>
+                <span className="text-sm font-semibold opacity-90">{dict.contact.info.whatsapp?.value || "965 228 772"}</span>
+              </a>
+
               <div className="mt-12 space-y-6">
                 <div className="flex items-start gap-5">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand/5 text-brand">
@@ -84,6 +99,25 @@ export default async function ContactPage({ params }: ContactPageProps) {
                       className="mt-1 text-sm text-text-secondary transition-colors hover:text-gold-dark"
                     >
                       {dict.contact.info.phone.value}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-5">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand/5 text-[#25D366]">
+                    <MessageCircle size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-brand">
+                      {dict.contact.info.whatsapp?.label || "WhatsApp"}
+                    </h4>
+                    <a
+                      href={whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 text-sm text-text-secondary transition-colors hover:text-[#25D366]"
+                    >
+                      {dict.contact.info.whatsapp?.value || "965 228 772"}
                     </a>
                   </div>
                 </div>
@@ -150,7 +184,6 @@ export default async function ContactPage({ params }: ContactPageProps) {
             title="Localização do escritório Mário Ferreira Advogados"
           />
 
-          {/* Overlay com a morada - posicionada no canto inferior esquerdo */}
           <div className="absolute bottom-6 left-6 rounded-lg bg-white/95 px-6 py-4 shadow-lg backdrop-blur-sm">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand text-white">
@@ -167,7 +200,6 @@ export default async function ContactPage({ params }: ContactPageProps) {
             </div>
           </div>
 
-          {/* Badge "Como Chegar" no canto inferior direito */}
           <a
             href="https://maps.google.com/?q=Rua+José+Florindo+44C+Cascais"
             target="_blank"

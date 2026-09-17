@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Container } from "../ui/Container";
-import { ArrowUpRight, Phone, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Locale } from "@/lib/i18n";
 
 interface ContactCTAProps {
@@ -51,6 +51,10 @@ interface ContactCTAProps {
         label: string;
         value: string;
       };
+      whatsapp?: {
+        label: string;
+        value: string;
+      };
       email: {
         label: string;
         value: string;
@@ -64,6 +68,9 @@ interface ContactCTAProps {
 }
 
 export function ContactCTA({ locale, dict }: ContactCTAProps) {
+  const whatsappNumber = dict.info.whatsapp?.value?.replace(/\s/g, "") || "965228772";
+  const whatsappLink = `https://wa.me/351${whatsappNumber}`;
+
   return (
     <section className="relative overflow-hidden bg-brand py-24 sm:py-28 lg:py-32">
       <div className="absolute -left-48 -top-48 h-96 w-96 rounded-full border border-gold/10" />
@@ -89,6 +96,18 @@ export function ContactCTA({ locale, dict }: ContactCTAProps) {
               {dict.description}
             </p>
 
+            {/* WhatsApp em Destaque */}
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#25D366] px-6 py-4 text-sm font-bold text-white shadow-lg shadow-[#25D366]/30 transition-all hover:bg-[#1ebe5b] hover:scale-105"
+            >
+              <MessageCircle size={20} className="transition-transform duration-300 group-hover:scale-110" />
+              <span>WhatsApp</span>
+              <span className="text-xs font-semibold opacity-90">{dict.info.whatsapp?.value || "965 228 772"}</span>
+            </a>
+
             <div className="mt-10 space-y-4">
               <a
                 href={`tel:${dict.info.phone.value.replace(/\s/g, "")}`}
@@ -104,6 +123,26 @@ export function ContactCTA({ locale, dict }: ContactCTAProps) {
                   </p>
                   <p className="text-sm font-semibold text-white">
                     {dict.info.phone.value}
+                  </p>
+                </div>
+              </a>
+
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 text-white transition-colors hover:text-[#25D366]"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 group-hover:border-[#25D366]">
+                  <MessageCircle size={18} className="text-[#25D366]" />
+                </div>
+
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/50">
+                    {dict.info.whatsapp?.label || "WhatsApp"}
+                  </p>
+                  <p className="text-sm font-semibold text-white">
+                    {dict.info.whatsapp?.value || "965 228 772"}
                   </p>
                 </div>
               </a>

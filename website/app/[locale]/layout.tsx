@@ -51,12 +51,23 @@ export default async function LocaleLayout({
   }
 
   const dict = await getDictionary(locale as Locale);
+  const footerContact = dict.footer.contact as typeof dict.footer.contact & {
+    whatsapp?: string;
+  };
+
+  const footerDict = {
+    ...dict.footer,
+    contact: {
+      ...footerContact,
+      whatsapp: footerContact.whatsapp ?? "",
+    },
+  };
 
   return (
     <>
       <Navbar locale={locale} dict={dict.navbar} />
       <main>{children}</main>
-      <Footer locale={locale} dict={dict.footer} />
+      <Footer locale={locale} dict={footerDict} />
     </>
   );
 }

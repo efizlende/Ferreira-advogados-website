@@ -13,7 +13,6 @@ export default async function AboutPage({ params }: AboutPageProps) {
   const { locale } = await params;
   const dict = await getDictionary(locale);
 
-  // Usar o dicionário para o conteúdo
   const aboutDict = dict.home.about;
 
   return (
@@ -41,8 +40,8 @@ export default async function AboutPage({ params }: AboutPageProps) {
 
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70">
               {locale === "pt"
-                ? "Há mais de 20 anos a defender os direitos dos nossos clientes com excelência, proximidade e integridade."
-                : "For over 20 years defending our clients' rights with excellence, proximity and integrity."}
+                ? "Há mais de 40 anos a defender os direitos dos nossos clientes com excelência, proximidade e integridade."
+                : "For over 40 years defending our clients' rights with excellence, proximity and integrity."}
             </p>
           </div>
         </Container>

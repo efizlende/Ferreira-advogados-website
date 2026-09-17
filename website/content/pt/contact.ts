@@ -50,7 +50,7 @@ export const contact = {
   info: {
     title: "Como podemos ajudá-lo?",
     description:
-      "Estamos disponíveis para agendar uma consulta presencial ou remota. Respondemos a todos os pedidos  até 24h úteis.",
+      "Estamos disponíveis para agendar uma consulta presencial ou remota. Respondemos a todos os pedidos até 24h úteis.",
     address: {
       label: "Morada",
       value: "Rua José Florindo, 44C\n2750-400 Cascais",
@@ -59,13 +59,17 @@ export const contact = {
       label: "Telefone",
       value: "+351 214 848 390",
     },
+    whatsapp: {
+      label: "WhatsApp",
+      value: "965 228 772",
+    },
     email: {
       label: "Email",
       value: "mario.ferreira-4651l@advogados.oa.pt",
     },
     hours: {
       label: "Horário",
-      value: "Segunda a Sexta: 9:00 - 19:00",
+      value: "Segunda-feira a Sexta-feira: 9:00 - 19:00",
     },
   },
 } as const;

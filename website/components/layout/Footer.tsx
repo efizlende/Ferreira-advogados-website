@@ -1,11 +1,10 @@
-
 "use client";
 
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "../ui/Container";
-import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowUpRight, MessageCircle } from "lucide-react";
 
 interface FooterProps {
   locale: string;
@@ -22,6 +21,7 @@ interface FooterProps {
       title: string;
       address: string;
       phone: string;
+      whatsapp: string;
       email: string;
     };
     legal: {
@@ -47,6 +47,9 @@ export function Footer({ locale, dict }: FooterProps) {
     return `/${locale}${href}`;
   };
 
+  const whatsappNumber = dict.contact.whatsapp.replace(/\s/g, "");
+  const whatsappLink = `https://wa.me/351${whatsappNumber}`;
+
   return (
     <footer className="relative overflow-hidden bg-brand-dark text-white">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
@@ -62,7 +65,6 @@ export function Footer({ locale, dict }: FooterProps) {
               href={`/${locale}`}
               className="group flex items-center gap-4 transition-all hover:translate-x-1"
             >
-              {/* Logótipo */}
               <div className="relative h-15 w-20 flex-shrink-0 overflow-hidden rounded-full border border-gold/30 transition-all duration-300 group-hover:border-gold group-hover:shadow-lg group-hover:shadow-gold/20">
                 <Image
                   src="/images/logo.png"
@@ -72,7 +74,6 @@ export function Footer({ locale, dict }: FooterProps) {
                 />
               </div>
 
-              {/* Nome */}
               <div className="flex flex-col">
                 <span className="font-heading text-xl font-semibold leading-none text-white transition-colors group-hover:text-gold">
                   Mário Ferreira
@@ -87,48 +88,17 @@ export function Footer({ locale, dict }: FooterProps) {
               {dict.slogan}
             </p>
 
-            {/* Redes Sociais */}
-            <div className="mt-6 flex gap-4">
-              <a
-                href="#"
-                className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-gold hover:bg-gold/10 hover:text-gold"
-                aria-label="LinkedIn"
-                onMouseEnter={() => setHoveredLink("linkedin")}
-                onMouseLeave={() => setHoveredLink(null)}
-              >
-                <svg
-                  className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-
-                <span className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-brand-dark px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">
-                  LinkedIn
-                </span>
-              </a>
-
-              <a
-                href="#"
-                className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-gold hover:bg-gold/10 hover:text-gold"
-                aria-label="Twitter"
-                onMouseEnter={() => setHoveredLink("twitter")}
-                onMouseLeave={() => setHoveredLink(null)}
-              >
-                <svg
-                  className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-
-                <span className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-brand-dark px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">
-                  Twitter / X
-                </span>
-              </a>
-            </div>
+            {/* WhatsApp em Destaque */}
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-6 inline-flex items-center gap-3 rounded-full bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-[#25D366]/30 transition-all hover:bg-[#1ebe5b] hover:scale-105"
+            >
+              <MessageCircle size={18} className="transition-transform duration-300 group-hover:scale-110" />
+              <span>WhatsApp</span>
+              <span className="text-xs font-semibold opacity-90">{dict.contact.whatsapp}</span>
+            </a>
           </div>
 
           {/* Navigation */}
@@ -191,6 +161,23 @@ export function Footer({ locale, dict }: FooterProps) {
                   />
                   <span className="transition-transform duration-300 group-hover:translate-x-0.5">
                     {dict.contact.phone}
+                  </span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 text-sm text-white/60 transition-all hover:text-[#25D366]"
+                >
+                  <MessageCircle
+                    size={16}
+                    className="text-[#25D366] transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <span className="transition-transform duration-300 group-hover:translate-x-0.5">
+                    {dict.contact.whatsapp}
                   </span>
                 </a>
               </li>

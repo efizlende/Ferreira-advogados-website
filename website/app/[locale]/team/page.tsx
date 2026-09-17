@@ -1,9 +1,8 @@
-
 import Image from "next/image";
 import { getDictionary } from "@/content/dictionaries";
 import { Container } from "@/components/ui/Container";
 import { Locale } from "@/lib/i18n";
-import { ArrowUpRight, Mail,  } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 import Link from "next/link";
 
 interface TeamPageProps {
@@ -15,7 +14,6 @@ interface TeamMember {
   role: string;
   bio: string;
   email: string;
-  linkedin?: string;
   image?: string | null;
   expertise: string[];
 }
@@ -71,14 +69,14 @@ export default async function TeamPage({ params }: TeamPageProps) {
                   key={index}
                   className="group overflow-hidden rounded-2xl bg-surface transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
                 >
-                  {/* Image Container */}
+                  {/* Image Container - Centralizada */}
                   <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-brand/10 to-gold/10">
                     {imagePath ? (
                       <Image
                         src={imagePath}
                         alt={member.name}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     ) : (
@@ -126,19 +124,8 @@ export default async function TeamPage({ params }: TeamPageProps) {
                       )}
                     </div>
 
-                    {/* Social Links */}
+                    {/* Social Links - Apenas Email */}
                     <div className="mt-6 flex items-center gap-4 border-t border-border pt-4">
-                      {member.linkedin && (
-                        <a
-                          href={member.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-text-muted transition-colors hover:text-gold-dark"
-                          aria-label="LinkedIn"
-                        >
-                     
-                        </a>
-                      )}
                       <a
                         href={`mailto:${member.email}`}
                         className="text-text-muted transition-colors hover:text-gold-dark"
