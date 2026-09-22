@@ -14,12 +14,12 @@ interface InsightsPreviewProps {
     readMore: string;
     readTime: string;
     articles: readonly {
+      slug: string;
       category: string;
       title: string;
       excerpt: string;
       date: string;
       readTime: number;
-      href: string;
       tags: readonly string[];
       image?: string;
     }[];
@@ -28,10 +28,6 @@ interface InsightsPreviewProps {
 
 export function InsightsPreview({ locale, dict }: InsightsPreviewProps) {
   const articles = dict.articles.slice(0, 3);
-
-  const isExternalLink = (href: string) => {
-    return href.startsWith("http://") || href.startsWith("https://");
-  };
 
   return (
     <section className="bg-surface py-24 sm:py-28 lg:py-32">
@@ -73,17 +69,11 @@ export function InsightsPreview({ locale, dict }: InsightsPreviewProps) {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((article, index) => {
             const imagePath = article.image || null;
-            const isExternal = isExternalLink(article.href);
-            const linkProps = isExternal
-              ? { href: article.href, target: "_blank", rel: "noopener noreferrer" }
-              : { href: `/${locale}${article.href}` };
-
-            const Wrapper = isExternal ? "a" : Link;
 
             return (
-              <Wrapper
+              <Link
                 key={index}
-                {...linkProps}
+                href={`/${locale}/insights/${article.slug}`}
                 className="group overflow-hidden rounded-2xl bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
                 {/* Image Container */}
@@ -104,19 +94,11 @@ export function InsightsPreview({ locale, dict }: InsightsPreviewProps) {
                     </div>
                   )}
 
-                  {/* Overlay com categoria no hover */}
                   <div className="absolute inset-0 flex items-center justify-center bg-brand/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <span className="font-heading text-xl font-medium text-white">
                       {article.category}
                     </span>
                   </div>
-
-                  {/* Badge de link externo */}
-                  {isExternal && (
-                    <div className="absolute top-3 right-3 rounded-full bg-gold/90 px-2 py-1 text-[10px] font-semibold text-brand">
-                      📄 PDF
-                    </div>
-                  )}
                 </div>
 
                 {/* Content */}
@@ -165,12 +147,15 @@ export function InsightsPreview({ locale, dict }: InsightsPreviewProps) {
                     </span>
 
                     <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.15em] text-gold-dark transition-colors group-hover:text-brand">
-                      {isExternal ? "Ler PDF" : dict.readMore}
-                      <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      {dict.readMore}
+                      <ArrowUpRight
+                        size={14}
+                        className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                      />
                     </span>
                   </div>
                 </div>
-              </Wrapper>
+              </Link>
             );
           })}
         </div>

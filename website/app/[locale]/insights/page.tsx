@@ -10,14 +10,9 @@ interface InsightsPageProps {
   params: Promise<{ locale: Locale }>;
 }
 
-const isExternalLink = (href: string) => {
-  return href.startsWith("http://") || href.startsWith("https://");
-};
-
 export default async function InsightsPage({ params }: InsightsPageProps) {
   const { locale } = await params;
   const dict = await getDictionary(locale);
-  // dict.insights.articles may be readonly; convert via unknown first to avoid TypeScript error
   const articles = (dict.insights.articles as unknown) as any[];
 
   return (
@@ -55,17 +50,11 @@ export default async function InsightsPage({ params }: InsightsPageProps) {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {articles.map((article, index) => {
               const imagePath = article.image || null;
-              const isExternal = isExternalLink(article.href);
-              const linkProps = isExternal
-                ? { href: article.href, target: "_blank", rel: "noopener noreferrer" }
-                : { href: `/${locale}${article.href}` };
-
-              const Wrapper = isExternal ? "a" : Link;
 
               return (
-                <Wrapper
+                <Link
                   key={index}
-                  {...linkProps}
+                  href={`/${locale}/insights/${article.slug}`}
                   className="group overflow-hidden rounded-2xl bg-surface transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
                 >
                   {/* Image Container */}
@@ -91,12 +80,6 @@ export default async function InsightsPage({ params }: InsightsPageProps) {
                         {article.category}
                       </span>
                     </div>
-
-                    {isExternal && (
-                      <div className="absolute top-3 right-3 rounded-full bg-gold/90 px-2 py-1 text-[10px] font-semibold text-brand">
-                        📄 PDF
-                      </div>
-                    )}
                   </div>
 
                   {/* Content */}
@@ -143,12 +126,15 @@ export default async function InsightsPage({ params }: InsightsPageProps) {
                       </span>
 
                       <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.15em] text-gold-dark transition-colors group-hover:text-brand">
-                        {isExternal ? "Ler PDF" : dict.insights.readMore}
-                        <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                        {dict.insights.readMore}
+                        <ArrowUpRight
+                          size={14}
+                          className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                        />
                       </span>
                     </div>
                   </div>
-                </Wrapper>
+                </Link>
               );
             })}
           </div>

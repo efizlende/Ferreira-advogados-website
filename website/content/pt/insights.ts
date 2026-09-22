@@ -6,6 +6,8 @@ export const insights = {
   viewAll: "Ver todos os artigos",
   readMore: "Ler artigo",
   readTime: "min de leitura",
+  backToInsights: "← Voltar aos Insights",
+  publishedOn: "Publicado a",
   categories: {
     civil: "Direito Civil",
     labor: "Direito do Trabalho",
@@ -17,70 +19,166 @@ export const insights = {
   },
   articles: [
     {
-      category: "Direito do Trabalho",
-      title: "A importância do compliance laboral nas empresas em 2026",
+      slug: "direito-civil",
+      category: "Direito Civil",
+      title: "Direito Civil: proteção e defesa dos seus direitos",
       excerpt:
-        "Com as novas regulamentações laborais, as empresas precisam de revisitar as suas práticas de compliance para evitar riscos e garantir a conformidade.",
+        "O Direito Civil é o ramo do direito privado que disciplina as relações jurídicas entre pessoas singulares e coletivas. Atuamos na defesa dos seus interesses em matérias como responsabilidade civil, contratos, direitos reais e propriedade.",
       date: "15 de Janeiro, 2026",
       readTime: 5,
-      href: "https://drive.google.com/file/d/1dGmlXPohSONErawzCQQDH5zii0khhh7R/view?usp=sharing",
-      tags: ["Trabalho", "Compliance", "Empresas"],
-      image: "/images/direito_trabalho.jpeg",
+      tags: ["Civil", "Contratos", "Responsabilidade"],
+      image: "/images/direito_civil.jpeg",
+      content: {
+        intro:
+          "O Direito Civil é o ramo do direito privado que disciplina as relações jurídicas entre pessoas singulares e coletivas. Atuamos na defesa dos seus interesses em matérias como responsabilidade civil, contratos, direitos reais e propriedade.",
+        sections: [
+          {
+            title: "Indemnizações",
+            paragraphs: [
+              "O escritório aprecia a posição jurídica do cliente e identifica as vias disponíveis, privilegiando a composição extrajudicial. Não sendo alcançável o acordo, assegura o patrocínio judiciário até ao trânsito em julgado.",
+            ],
+          },
+          {
+            title: "Como podemos ajudar",
+            paragraphs: [
+              "O escritório aprecia a posição jurídica do cliente e identifica as vias disponíveis, privilegiando a composição extrajudicial. Não sendo alcançável o acordo, assegura o patrocínio judiciário até ao trânsito em julgado.",
+            ],
+          },
+        ],
+      },
     },
     {
-      category: "Direito Imobiliário",
-      title: "Mudanças no regime do arrendamento em Portugal: o que precisa de saber",
+      slug: "direito-comercial-societario",
+      category: "Direito Comercial e Societário",
+      title: "Direito Comercial e Societário: apoio jurídico integral para o seu negócio",
       excerpt:
-        "As recentes alterações à lei do arrendamento urbano trazem novas regras para senhorios e inquilinos que importa conhecer.",
+        "O Direito Comercial e Societário abrange as matérias jurídicas relacionadas com a atividade empresarial. Prestamos assessoria jurídica a empresas em todas as fases do seu ciclo de vida.",
       date: "12 de Janeiro, 2026",
-      readTime: 4,
-      href: "https://drive.google.com/file/d/1dGmlXPohSONErawzCQQDH5zii0khhh7R/view?usp=sharing",
-      tags: ["Imobiliário", "Arrendamento", "Legislação"],
-      image: "/images/direito_imobiliario.jpeg",
-    },
-    {
-      category: "Direito Societário",
-      title: "Governação corporativa: como preparar a sua empresa para o futuro",
-      excerpt:
-        "Uma governação sólida é fundamental para o crescimento sustentável e a atração de investimento. Conheça as melhores práticas.",
-      date: "8 de Janeiro, 2026",
-      readTime: 6,
-      href: "https://drive.google.com/file/d/1dGmlXPohSONErawzCQQDH5zii0khhh7R/view?usp=sharing",
-      tags: ["Empresas", "Governação", "Investimento"],
+      readTime: 5,
+      tags: ["Comercial", "Societário", "Empresas"],
       image: "/images/direito_societario.jpeg",
+      content: {
+        intro:
+          "O Direito Comercial e Societário abrange as matérias jurídicas relacionadas com a atividade empresarial. Prestamos assessoria jurídica a empresas em todas as fases do seu ciclo de vida, da constituição à gestão corrente e ao governo societário.",
+        sections: [
+          {
+            title: "Constituição de sociedades e pactos sociais",
+            paragraphs: [
+              "O escritório presta assessoria continuada a sociedades comerciais, salientando os estatutos, acordos parassociais, contratação comercial e apoio aos órgãos sociais. A intervenção antecipa o risco jurídico, que se fixa na constituição e na contratação.",
+            ],
+          },
+          {
+            title: "Governo Societário",
+            paragraphs: [
+              "O governo societário é hoje uma exigência de transparência e responsabilidade. Acompanhamos as sociedades na adoção de boas práticas de governo, no cumprimento de deveres legais e na prevenção de conflitos entre sócios e órgãos sociais.",
+            ],
+          },
+          {
+            title: "Como podemos ajudar",
+            paragraphs: [
+              "O escritório presta assessoria continuada a sociedades comerciais, salientando os estatutos, acordos parassociais, contratação comercial e apoio aos órgãos sociais. A intervenção antecipa o risco jurídico, que se fixa na constituição e na contratação.",
+            ],
+          },
+        ],
+      },
     },
     {
-      category: "Direito da Família",
-      title: "Mediação familiar: uma alternativa aos processos judiciais",
+      slug: "direito-trabalho",
+      category: "Direito do Trabalho",
+      title: "Direito do Trabalho: defesa dos direitos dos trabalhadores e empresas",
       excerpt:
-        "A mediação familiar tem ganho destaque como uma via mais célere e menos desgastante para resolver conflitos familiares.",
+        "O Direito do Trabalho regula as relações entre empregadores e trabalhadores. Intervimos tanto na defesa dos direitos dos trabalhadores como na assessoria a empresas.",
+      date: "8 de Janeiro, 2026",
+      readTime: 4,
+      tags: ["Trabalho", "Empregadores", "Trabalhadores"],
+      image: "/images/direito_trabalho.jpeg",
+      content: {
+        intro:
+          "O Direito do Trabalho regula as relações entre empregadores e trabalhadores. Intervimos tanto na defesa dos direitos dos trabalhadores como na assessoria a empresas, em matéria de conformidade com o Código do Trabalho e demais legislação laboral.",
+        sections: [
+          {
+            title: "Como podemos ajudar",
+            paragraphs: [
+              "O escritório intervém junto de empregadores e de trabalhadores, em processos distintos. Do lado da empresa, contratos, processos disciplinares e cessação do vínculo; do lado do trabalhador, licitude do despedimento, créditos laborais e patrocínio em juízo.",
+            ],
+          },
+        ],
+      },
+    },
+    {
+      slug: "direito-familia-sucessoes",
+      category: "Direito da Família e Sucessões",
+      title: "Direito da Família e Sucessões: acompanhamento humano e discreto",
+      excerpt:
+        "O Direito da Família e das Sucessões trata de questões profundamente pessoais. Asseguramos um acompanhamento humano e discreto, aliado ao rigor técnico.",
       date: "5 de Janeiro, 2026",
       readTime: 4,
-      href: "https://drive.google.com/file/d/1dGmlXPohSONErawzCQQDH5zii0khhh7R/view?usp=sharing",
-      tags: ["Família", "Mediação", "Divórcio"],
+      tags: ["Família", "Sucessões", "Partilhas"],
       image: "/images/direito_familiar.jpeg",
+      content: {
+        intro:
+          "O Direito da Família e das Sucessões trata de questões profundamente pessoais. Asseguramos um acompanhamento humano e discreto, aliado ao rigor técnico que a defesa dos seus interesses exige.",
+        sections: [
+          {
+            title: "Divórcio e partilha do património conjugal",
+            paragraphs: [
+              "O escritório acompanha divórcios, regulação das responsabilidades parentais, alimentos e inventários, por via consensual ou contenciosa. Procura-se o acordo sempre que possível, por ser o que menor desgaste impõe; não o sendo, assegura-se a representação judicial.",
+            ],
+          },
+          {
+            title: "Como podemos ajudar",
+            paragraphs: [
+              "O escritório acompanha divórcios, regulação das responsabilidades parentais, alimentos e inventários, por via consensual ou contenciosa. Procura-se o acordo sempre que possível, por ser o que menor desgaste impõe; não o sendo, assegura-se a representação judicial.",
+            ],
+          },
+        ],
+      },
     },
     {
-      category: "Direito Civil",
-      title: "Contratos: como evitar litígios através de uma redação eficaz",
+      slug: "direito-penal",
+      category: "Direito Penal",
+      title: "Direito Penal: defesa técnica em todas as fases do processo",
       excerpt:
-        "Uma boa redação contratual é a melhor defesa contra litígios. Saiba como prevenir problemas através da clareza e precisão.",
+        "O Direito Penal tutela os bens jurídicos fundamentais da comunidade. Asseguramos defesa técnica em todas as fases do processo, do inquérito ao recurso.",
       date: "2 de Janeiro, 2026",
       readTime: 5,
-      href: "https://drive.google.com/file/d/1dGmlXPohSONErawzCQQDH5zii0khhh7R/view?usp=sharing",
-      tags: ["Contratos", "Litígio", "Prevenção"],
-      image: "/images/direito_civil.jpeg",
+      tags: ["Penal", "Defesa", "Processo"],
+      image: "/images/direito penal.jpeg",
+      content: {
+        intro:
+          "O Direito Penal tutela os bens jurídicos fundamentais da comunidade. Asseguramos defesa técnica em todas as fases do processo, do inquérito ao recurso, bem como a representação do ofendido que se constitua assistente.",
+        sections: [
+          {
+            title: "Como podemos ajudar",
+            paragraphs: [
+              "O escritório assegura a defesa do arguido em inquérito, instrução, julgamento e recurso, e a representação do assistente. O mandato não se afere pelo desfecho, que a lei não consente prometer, mas pela plenitude das garantias de defesa exercidas.",
+            ],
+          },
+        ],
+      },
     },
     {
-      category: "Direito Penal",
-      title: "O impacto das novas tecnologias no direito penal",
+      slug: "direito-imobiliario",
+      category: "Direito Imobiliário",
+      title: "Direito Imobiliário: segurança nas suas transações",
       excerpt:
-        "A era digital trouxe novos desafios ao direito penal, desde a proteção de dados até ao combate ao cibercrime.",
+        "O Direito Imobiliário abrange as relações jurídicas relativas a bens imóveis. Acompanhamos a operação em todas as fases.",
       date: "28 de Dezembro, 2025",
-      readTime: 6,
-      href: "https://drive.google.com/file/d/1dGmlXPohSONErawzCQQDH5zii0khhh7R/view?usp=sharing",
-      tags: ["Penal", "Tecnologia", "Cibercrime"],
-      image: "/images/direito penal.jpeg",
+      readTime: 4,
+      tags: ["Imobiliário", "Transações", "Construção"],
+      image: "/images/direito_imobiliario.jpeg",
+      content: {
+        intro:
+          "O Direito Imobiliário abrange as relações jurídicas relativas a bens imóveis. Acompanhamos a operação em todas as fases — da verificação registal e da negociação à escritura, ao licenciamento e à execução da obra.",
+        sections: [
+          {
+            title: "Como podemos ajudar",
+            paragraphs: [
+              "O escritório acompanha a operação imobiliária da verificação registal à escritura e ao registo e, em matéria de construção, o licenciamento e a empreitada. Tratando-se de adquirente não residente, assegura as formalidades prévias exigíveis.",
+            ],
+          },
+        ],
+      },
     },
   ],
 } as const;
