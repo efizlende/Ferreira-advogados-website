@@ -37,13 +37,10 @@ ENV NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
 
 RUN pnpm build
 
-
 # ─── Stage 3: Runtime ─────────────────────────────────────
 FROM node:20-alpine AS runtime
 
-RUN apk add --no-cache \
-    libc6-compat \
-    curl
+RUN apk add --no-cache libc6-compat curl
 
 WORKDIR /app
 
@@ -62,8 +59,5 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 USER nextjs
 
 EXPOSE 3002
-
-HEALTHCHECK --interval=30s --timeout=10s --start-period=20s --retries=3 \
-    CMD curl -f http://localhost:3002/ || exit 1
 
 CMD ["node", "server.js"]
