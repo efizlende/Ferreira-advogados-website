@@ -1,0 +1,103 @@
+// ─────────────────────────────────────────────────────────
+// RiseON Website — Pipeline
+// ─────────────────────────────────────────────────────────
+
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'VERSION', defaultValue: 'latest', description: 'Versão da imagem')
+        choice(name: 'DEPLOY', choices: ['true', 'false'], description: 'Fazer deploy?')
+    }
+
+    environment {
+        IMAGE_NAME = "mfadvogados-website"
+        DOCKERHUB_USER  = "ernesto1982"
+        VPS_HOST        = "169.58.133.145"
+        VPS_USER        = "bluehat"
+        VPS_DEPLOY_PATH = "/root/riseonhub/docker"
+    }
+
+    options {
+        timestamps()
+        timeout(time: 30, unit: 'MINUTES')
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+        disableConcurrentBuilds()
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo "→ Clonando repositório..."
+                checkout scm
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo "→ Construindo imagem Docker..."
+                sh """
+                    docker build \\
+                        -t ${DOCKERHUB_USER}/${IMAGE_NAME}:${params.VERSION} \\
+                        -t ${DOCKERHUB_USER}/${IMAGE_NAME}:latest \\
+                        ./website
+                """
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                echo "→ Push para o Docker Hub..."
+                withCredentials([usernamePassword(
+                    credentialsId: 'docker-hub-credentials',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh """
+                        echo "\$DOCKER_PASS" | docker login -u "\$DOCKER_USER" --password-stdin
+                        docker push ${DOCKERHUB_USER}/${IMAGE_NAME}:${params.VERSION}
+                        docker push ${DOCKERHUB_USER}/${IMAGE_NAME}:latest
+                        docker logout
+                        echo "✓ Push concluído"
+                    """
+                }
+            }
+        }
+
+        stage('Deploy on VPS') {
+            when { expression { params.DEPLOY == 'true' } }
+            steps {
+                echo "→ Deploy na VPS..."
+                withCredentials([sshUserPrivateKey(
+                    credentialsId: 'vps-ssh-key',
+                    keyFileVariable: 'SSH_KEY',
+                    usernameVariable: 'SSH_USER'
+                )]) {
+                    sh """
+                        ssh -i "\$SSH_KEY" -o StrictHostKeyChecking=no \\
+                            ${VPS_USER}@${VPS_HOST} -p 2222 <<'REMOTE'
+                            set -e
+                            cd ${VPS_DEPLOY_PATH}
+                            docker compose --env-file .env.prod pull ${IMAGE_NAME}
+                            docker compose --env-file .env.prod up -d ${IMAGE_NAME}
+                            sleep 8
+                            docker compose --env-file .env.prod ps ${IMAGE_NAME}
+                            docker compose --env-file .env.prod logs --tail=20 ${IMAGE_NAME}
+REMOTE
+                        echo "✓ Deploy concluído"
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        success { echo "✅ Pipeline ${IMAGE_NAME} concluída" }
+        failure { echo "❌ Pipeline ${IMAGE_NAME} falhou" }
+        always {
+            sh 'docker logout || true'
+            cleanWs()
+        }
+    }
+}
