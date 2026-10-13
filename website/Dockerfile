@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────────────────────
-# RiseON Website — Next.js
+# MF Advogados Website — Next.js
 # Multi-stage build com output standalone
 # ─────────────────────────────────────────────────────────
 
@@ -30,7 +30,6 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Build args (se precisares de NEXT_PUBLIC_*)
 ARG NEXT_PUBLIC_API_URL
 ARG NEXT_PUBLIC_SITE_URL
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
@@ -48,7 +47,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV PORT=3001
+ENV PORT=3002
 ENV HOSTNAME=0.0.0.0
 
 RUN addgroup --system --gid 1001 nodejs && \
@@ -58,10 +57,14 @@ COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# ─── FIX: incluir @swc/helpers no runtime ─────────────────
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@swc/helpers ./node_modules/@swc/helpers
+
 USER nextjs
 
-EXPOSE 3001
+EXPOSE 3002
 
-
+HEALTHCHECK --interval=30s --timeout=10s --start-period=20s --retries=3 \
+    CMD curl -f http://localhost:3002/ || exit 1
 
 CMD ["node", "server.js"]
