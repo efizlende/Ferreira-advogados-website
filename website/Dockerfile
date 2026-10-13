@@ -41,7 +41,7 @@ RUN pnpm build
 # ─── Stage 3: Runtime ─────────────────────────────────────
 FROM node:20-alpine AS runtime
 
-RUN apk add --no-cache libc6-compat curl
+RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 
@@ -57,13 +57,11 @@ COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# ─── FIX: @swc/helpers via pnpm virtual store ─────────────
-COPY --from=builder --chown=nextjs:nodejs /app/node_modules/.pnpm/@swc+helpers@*/node_modules/@swc ./node_modules/@swc
+# ─── FIX: copiar TODO o node_modules do builder ───────────
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules
 
 USER nextjs
 
 EXPOSE 3002
-
-
 
 CMD ["node", "server.js"]
