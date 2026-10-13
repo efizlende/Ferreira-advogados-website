@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────────────────────
-# MF Advogados Website — Next.js
+# RiseON Website — Next.js
 # Multi-stage build com output standalone
 # ─────────────────────────────────────────────────────────
 
@@ -47,7 +47,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV PORT=3002
+ENV PORT=3001
 ENV HOSTNAME=0.0.0.0
 
 RUN addgroup --system --gid 1001 nodejs && \
@@ -57,14 +57,11 @@ COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# ─── FIX: incluir @swc/helpers no runtime ─────────────────
-COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@swc/helpers ./node_modules/@swc/helpers
+# ─── FIX: @swc/helpers via pnpm virtual store ─────────────
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/.pnpm/@swc+helpers@*/node_modules/@swc ./node_modules/@swc
 
 USER nextjs
 
-EXPOSE 3002
 
-HEALTHCHECK --interval=30s --timeout=10s --start-period=20s --retries=3 \
-    CMD curl -f http://localhost:3002/ || exit 1
 
 CMD ["node", "server.js"]
