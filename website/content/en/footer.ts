@@ -16,7 +16,9 @@ export const footer = {
     title: "Contact",
     address: "Rua José Florindo, 44C\n2750-400 Cascais",
     phone: "+351 214848390",
+    whatsapp: "965 228 772",
     email: "mario.ferreira-4651l@advogados.oa.pt",
+    
   },
   legal: {
     title: "Legal",

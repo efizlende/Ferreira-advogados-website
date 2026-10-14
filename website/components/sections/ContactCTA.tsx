@@ -131,10 +131,10 @@ export function ContactCTA({ locale, dict }: ContactCTAProps) {
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 text-white transition-colors hover:text-[#25D366]"
+                className="group flex items-center gap-4 text-white transition-colors hover:text-gold"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 group-hover:border-[#25D366]">
-                  <MessageCircle size={18} className="text-[#25D366]" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 group-hover:text-gold">
+                  <MessageCircle size={18} className="text-gold" />
                 </div>
 
                 <div>

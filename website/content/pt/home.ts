@@ -29,7 +29,7 @@ export const home = {
       {
         value: "40+",
         label: "Anos de experiência",
-        description: "Atuação consolidada em Cascais e região",
+        description: "Atuação consolidada na região de Cascais"
       },
       {
         value: "6",

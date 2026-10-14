@@ -21,6 +21,14 @@ interface TeamPreviewProps {
   };
 }
 
+// ⬇️ Mapa de posições individuais por membro
+// Ajusta o valor de cada um conforme necessário.
+// Ex: "center 20%" sobe a imagem, "center 10%" sobe mais, "center top" = topo
+const imagePositions: Record<string, string> = {
+  "Mário Ferreira": "center 3%",
+  "Beatriz Ferreira": "center 18%",   // ⬅️ sobe a imagem da Beatriz
+};
+
 export function TeamPreview({ locale, dict }: TeamPreviewProps) {
   const members = dict.members.slice(0, 3);
 
@@ -64,20 +72,23 @@ export function TeamPreview({ locale, dict }: TeamPreviewProps) {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {members.map((member, index) => {
             const imagePath = member.image || null;
+            // Pega a posição definida no mapa (ou usa "center 25%" por defeito)
+            const objectPosition = imagePositions[member.name] ?? "center 25%";
 
             return (
               <div
                 key={index}
                 className="group overflow-hidden rounded-2xl bg-white transition-all duration-300 hover:shadow-xl"
               >
-                {/* Image Container - Centralizada */}
+                {/* Image Container */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-brand/10 to-gold/10">
                   {imagePath ? (
                     <Image
                       src={imagePath}
                       alt={member.name}
                       fill
-                      className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      style={{ objectPosition }}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   ) : (

@@ -138,7 +138,7 @@ export function Footer({ locale, dict }: FooterProps) {
                   href="https://maps.google.com/?q=Rua+José+Florindo+44C+Cascais"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-start gap-3 text-sm text-white/60 transition-all hover:text-gold"
+                  className="group flex items-start gap-3 text-sm text-white transition-all hover:text-gold"
                 >
                   <MapPin
                     size={16}
@@ -153,7 +153,7 @@ export function Footer({ locale, dict }: FooterProps) {
               <li>
                 <a
                   href={`tel:${dict.contact.phone.replace(/\s/g, "")}`}
-                  className="group flex items-center gap-3 text-sm text-white/60 transition-all hover:text-gold"
+                  className="group flex items-center gap-3 text-sm text-white transition-all hover:text-gold"
                 >
                   <Phone
                     size={16}
@@ -165,27 +165,11 @@ export function Footer({ locale, dict }: FooterProps) {
                 </a>
               </li>
 
-              <li>
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 text-sm text-white/60 transition-all hover:text-[#25D366]"
-                >
-                  <MessageCircle
-                    size={16}
-                    className="text-[#25D366] transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <span className="transition-transform duration-300 group-hover:translate-x-0.5">
-                    {dict.contact.whatsapp}
-                  </span>
-                </a>
-              </li>
 
               <li>
                 <a
                   href={`mailto:${dict.contact.email}`}
-                  className="group flex items-center gap-3 text-sm text-white/60 transition-all hover:text-gold"
+                  className="group flex items-center gap-3 text-sm text-white transition-all hover:text-gold"
                 >
                   <Mail
                     size={16}
